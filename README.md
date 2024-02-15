@@ -1,1 +1,1 @@
-# gestionale
+esercizio array gestionale
