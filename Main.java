@@ -44,15 +44,24 @@ public class Main
             if(istruzione.equalsIgnoreCase("inserisci")){
                 System.out.println("inserisci la posizione del numero da inserire");
                 posizione=in.nextInt()-1;
-                System.out.println("inserisci il numero da inserire");
-                numero=in.nextInt();
-                temp=numeri[posizione];
-                numeri[posizione]=numero;
-                lunghezza++;
-                for (int i=posizione;i<numeri.length-1;i++) {
-                    temp2=numeri[i+1];
-                    numeri[i+1]=temp;
-                    temp=temp2;
+                if (posizione>=100 || posizione<0)
+                    System.out.println("posizione invalida");
+                else {
+
+                    System.out.println("inserisci il numero da inserire");
+                    numero = in.nextInt();
+                    if (posizione==99)
+                        numeri[99]=numero;
+                    else {
+                        temp = numeri[posizione];
+                        numeri[posizione] = numero;
+                        lunghezza++;
+                        for (int i = posizione; i < numeri.length - 1; i++) {
+                            temp2 = numeri[i + 1];
+                            numeri[i + 1] = temp;
+                            temp = temp2;
+                        }
+                    }
                 }
             }
 
@@ -65,16 +74,24 @@ public class Main
             }
 
             // ISTRUZIONE RANDOM
-            if (istruzione.equalsIgnoreCase("random")){
+            if (istruzione.equalsIgnoreCase("random")) {
                 System.out.println("a che posizione vuoi inserire il numero casuale?");
-                posizione=in.nextInt()-1;
-                temp=numeri[posizione];
-                numeri[posizione]=generatore.nextInt(50);
-                lunghezza++;
-                for (int i=posizione;i<numeri.length-1;i++) {
-                    temp2=numeri[i+1];
-                    numeri[i+1]=temp;
-                    temp=temp2;
+                posizione = in.nextInt() - 1;
+                if (posizione >= 100 || posizione < 0)
+                    System.out.println("posizione invalida");
+                else{
+                    if (posizione==99)
+                        numeri[99]=generatore.nextInt(50);
+                    else {
+                        temp = numeri[posizione];
+                        numeri[posizione] = generatore.nextInt(50);
+                        lunghezza++;
+                        for (int i = posizione; i < numeri.length - 1; i++) {
+                            temp2 = numeri[i + 1];
+                            numeri[i + 1] = temp;
+                            temp = temp2;
+                        }
+                    }
                 }
             }
 
@@ -82,12 +99,16 @@ public class Main
             if (istruzione.equalsIgnoreCase("rimuovi posizione")){
                 System.out.println("inserisci la posizione del numero che vuoi rimuovere");
                 posizione=in.nextInt()-1;
-                lunghezza--;
-                temp=numeri[numeri.length-1];
-                for (int i=numeri.length-1;i>posizione;i--){
-                    temp2=numeri[i-1];
-                    numeri[i-1]=temp;
-                    temp=temp2;
+                if (posizione>=100 || posizione<0)
+                    System.out.println("posizione invalida");
+                else {
+                    lunghezza--;
+                    temp = numeri[numeri.length - 1];
+                    for (int i = numeri.length - 1; i > posizione; i--) {
+                        temp2 = numeri[i - 1];
+                        numeri[i - 1] = temp;
+                        temp = temp2;
+                    }
                 }
             }
 
